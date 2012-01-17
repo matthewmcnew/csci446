@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Life Figure-Outer Application</title>
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<script type="text/javascript">
+function validateForm()
+{
+ 
+var x=document.forms["myForm"]["doing"].value;
+if (x==null || x=="")
+  {
+  alert("You got to feel something!");
+  return false;
+  }
+}
+</script>
+</head>
+<body>
+<div id="container">
+	<div id="head">
+		<div id="title">The Magic Life Figure-Outer!</div>
+		<div id="subtitle">Figuring out your life, So you don't have too..</div>
+	</div>
+	<div id="menu"  class="menu">
+		<ul>
+			<li><a href="#">Home<span>Bon Jovi was Right</span> </a></li>
+			<li><a href="#">Interests<span>We all need a Hobby</span></a></li>
+			<li><a href="#">Health<span>You are not young forever</span></a></li>
+			<li><a href="#">Academic<span>You need no Educacation</span></a></li>
+			<li><a href="#">Professional<span>Bring Home the Bacon</span></a></li>
+			<li><a href="#">Fun<span>Don't Forget</span></a></li>
+			<li><a href="#">Evil<span>No Comment</span></a></li>
+		</ul>
+	</div>
+
+
+		<div id="form">
+			<div id="lorem"> Lorem Ipsum Dolor Sit Amet.</div>
+		        <br>			
+			<form name="myForm">
+                        <table>
+			     <tr>
+                             <td>
+                                    How do you feel today?
+                              </td>
+                              <td>
+                                    <input type="text" name="doing">
+                            </tr>
+                           <tr>
+                                <td>
+                                    How would you like to feel?
+                                    <br>(choose all that apply)
+                                    </td>
+                                    <td>
+                                    <select multiple size=4>
+                                        <option value="1">Comfortably numb</option>
+                                        <option value="2">Grumpy as poop, you jerk</option>
+                                        <option value="3">Happy like I'm on controlled substances</option>
+                                        <option value="4">Normal. Absolutely normal.</option>
+                                    </select>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <input onclick="validateForm()" type="submit" value="Feel Me!"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+		</div>
+		<div id="currentContainer">
+			<div id="currentTitle">Current Progress in Life</div>
+			<div id="CurrentStatus">Mediocre. You really should enjoy life more.</div>
+		</div>
+
+	<div id="copyright">
+		Borg Copyright 2011
+	</div>
+
+
+
+</div> 
+</body>
+</html>
