@@ -1,16 +1,13 @@
 class Player
-  def health_calculator(warrior)
-    if @healh != 10
-     @health = 10
-    end
-  end
   def play_turn(warrior)
-     health_calculator(warrior)
+     
      if warrior.feel.empty?
-      if warrior.health != 20
+      if warrior.health != 20 and warrior.health > @health
+        @health = warrior.health
         warrior.rest!
       else
         warrior.walk!
+        @health = 0
       end
      else
         warrior.attack!
