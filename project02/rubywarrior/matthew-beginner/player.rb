@@ -9,6 +9,7 @@ class Player
      
      if warrior.feel(:forward).wall? 
       warrior.pivot!(:backward)
+      return
      end
      
      
