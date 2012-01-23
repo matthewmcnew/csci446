@@ -1,20 +1,44 @@
 class Player
+  
+  def initialize
+    @direction = :backward
+    @should_be_recharging = false
+  end
+  
   def play_turn(warrior)
      
-     if warrior.feel.empty?
-      if warrior.health != 20 and warrior.health > @health
-        @health = warrior.health
+     
+     if @should_be_recharging
+      if warrior.health == 20
+        @should_be_recharging = false
+      elsif warrior.feel(:backward).wall? 
         warrior.rest!
-      else
-        warrior.walk!
-        @health = 0
-      end
-     else
-      if warrior.feel.captive? 
-        warrior.rescue!
-      else
-        warrior.attack!
+        return
+      elsif 
+        warrior.walk!(:backward)
+        return
       end
      end
+     
+     if warrior.health < 10 # and warrior.health > @health
+         # @health = warrior.health
+         @should_be_recharging = true
+         warrior.walk!(:backward)
+     else
+       if warrior.feel(@direction).captive?
+         warrior.rescue!(@direction)
+         @direction = :forward
+       elsif warrior.feel(@direction).enemy?
+         warrior.attack!
+         @wall = false
+         
+         # @health = 0
+       else
+        warrior.walk!(@direction) 
+       end
+     end 
+
+
+
   end
 end
