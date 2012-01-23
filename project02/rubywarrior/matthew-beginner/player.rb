@@ -1,11 +1,15 @@
 class Player
   
   def initialize
-    @direction = :backward
+    @direction = :forward
     @should_be_recharging = false
   end
   
   def play_turn(warrior)
+     
+     if warrior.feel(:forward).wall? 
+      warrior.pivot!(:backward)
+     end
      
      
      if @should_be_recharging
