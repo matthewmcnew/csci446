@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   attr_reader :password
   validate :password_must_be_present
+  
+  after_destroy :ensure_an_admin_remains
+
 
   def password=(password)
     @password = password
@@ -23,6 +26,12 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def ensure_an_admin_remains
+    if User.count.zero?
+      raise "Can't delete last user"
+    end
+  end     
 
   private
     def password_must_be_present
