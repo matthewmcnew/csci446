@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
-  # GET /carts
-  # GET /carts.json
+  skip_before_filter :authorize, :only => [:create, :update, :destroy]
+
+
   def index
     @carts = Cart.all
 
@@ -10,8 +11,7 @@ class CartsController < ApplicationController
     end
   end
 
-  # GET /carts/1
-  # GET /carts/1.json
+
   def show
     begin
       @cart = Cart.find(params[:id])
